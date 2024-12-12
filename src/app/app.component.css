@@ -98,6 +98,7 @@
     top: 10px; /* Sesuaikan posisi tombol navigasi */
     right: 15px;
     gap: 10px;
+    z-index: 1000;
   }
 
   .top-nav button {
