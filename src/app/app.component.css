@@ -55,7 +55,7 @@
 }
 
 .top-nav button:hover {
-  color: #f8be86; /* Warna teks berubah saat hover */
+  color: #f8be86;
 }
 
 #about-section .fade-in {
@@ -101,7 +101,7 @@
   }
 
   .top-nav button {
-    font-size: 16px; /* Ukuran tombol lebih kecil */
+    font-size: 14px; /* Ukuran tombol lebih kecil */
   }
 
   #about-section div {
