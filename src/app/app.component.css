@@ -1,0 +1,445 @@
+/* Default Layout */
+.content-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.image-container {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 5px solid rgba(255, 255, 255, 0.2);
+  animation: fadeInRight 2s ease-out;
+}
+
+.text-container {
+  animation: fadeInUp 2s ease-out;
+}
+
+.text-container h1 {
+  font-size: 64px;
+  margin: 0;
+  color: #ffffff;
+}
+
+.text-container h2 {
+  font-size: 36px;
+  margin: 10px 0;
+  color: #ffffff;
+}
+
+.text-container p {
+  font-size: 24px;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.top-nav {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  display: flex;
+  gap: 15px;
+}
+
+.top-nav button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.top-nav button:hover {
+  color: #f8be86; /* Warna teks berubah saat hover */
+}
+
+#about-section .fade-in {
+  text-align: center;
+  margin-bottom: 40px;
+  margin-top: 40px; /* Tambahkan jarak ke atas */
+}
+
+
+/* Mobile View */
+@media (max-width: 768px) {
+  .content-container {
+    flex-direction: column; /* Gambar di atas, teks di bawah */
+    gap: 10px;
+    text-align: center; /* Tengahkan teks */
+    padding: 8px;
+  }
+
+  .image-container {
+    width: 200px;
+    height: 200px; /* Ukuran gambar lebih kecil di layar mobile */
+  }
+
+  .text-container h1 {
+    font-size: 36px; /* Ukuran title lebih kecil */
+    margin: 0 10px; /* Tambahkan margin horizontal */
+  }
+
+  .text-container h2 {
+    font-size: 24px; /* Ukuran nama lebih kecil */
+    margin: 5px 10px; /* Tambahkan margin horizontal */
+  }
+
+  .text-container p {
+    font-size: 16px; /* Ukuran deskripsi lebih kecil */
+    margin: 0 10px; /* Tambahkan margin horizontal */
+  }
+
+  .top-nav {
+    top: 10px; /* Sesuaikan posisi tombol navigasi */
+    right: 15px;
+    gap: 10px;
+  }
+
+  .top-nav button {
+    font-size: 16px; /* Ukuran tombol lebih kecil */
+  }
+
+  #about-section div {
+    text-align: center; /* Pusatkan teks untuk layar kecil */
+  }
+
+  #about-section .row {
+    flex-direction: column; /* Kolom menjadi satu arah vertikal */
+    gap: 20px;
+  }
+
+  #about-section img {
+    max-width: 200px; /* Gambar lebih kecil di layar kecil */
+  }
+
+  #about-section h1 {
+    font-size: 36px; /* Ukuran lebih kecil untuk mobile */
+  }
+
+  #about-section h2 {
+    font-size: 24px;
+  }
+
+  #about-section h3 {
+    font-size: 18px;
+  }
+
+  #about-section p {
+    font-size: 14px; /* Ukuran teks lebih kecil untuk mobile */
+  }
+
+  #about-section {
+    padding: 80px 20px; /* Sesuaikan padding untuk layar kecil */
+  }
+
+  #job-experience {
+    padding: 20px;
+  }
+
+  .current-job {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .current-job-info,
+  .current-job-detail {
+    text-align: center;
+    padding-left: 0;
+  }
+
+  .job-grid {
+    grid-template-columns: 1fr;
+  }
+
+  #certification-section {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  #certification-section > div {
+    margin-bottom: 20px;
+  }
+
+  #certification-section img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  #contact-section {
+    flex-direction: column;
+    text-align: center;
+    height: auto;
+  }
+
+  #contact-section > div {
+    margin-bottom: 40px;
+  }
+
+  #contact-section img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  #footer-section {
+    flex-direction: column;
+    text-align: center;
+    height: auto;
+  }
+
+  footer {
+    padding: 10px 5px; /* Kurangi padding untuk layar kecil */
+    font-size: 12px; /* Sesuaikan ukuran font */
+    margin-top: 140px;
+  }
+}
+
+/* Animasi */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@-webkit-keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(50px); /* Geser dari kanan */
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Default animation setup */
+.fade-in, .slide-in {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+  will-change: opacity, transform;
+}
+
+/* When elements are visible */
+.fade-in-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.slide-in-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+#job-experience {
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 50px;
+  background: #eeeff1;
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+/* Current Job Styling */
+.current-job {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.current-job-info {
+  flex: 1;
+  text-align: center;
+  max-width: 300px;
+}
+
+.current-job-detail {
+  flex: 3;
+  text-align: left;
+  padding: 20px;
+}
+
+.company-logo {
+  width: 32%;
+  height: auto;
+}
+
+/* Job Grid Styling */
+.job-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.job-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.job-date {
+  background: #333;
+  color: white;
+  padding: 10px;
+  text-align: center;
+}
+
+.job-card-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 12px;
+}
+
+.company-logo-small {
+  width: 10%;
+  height: auto;
+}
+
+.internship-title {
+  font-size: 14px;
+  font-weight: bold;
+  margin: 0;
+}
+
+#certification-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 50px;
+  background: #2f4f2f; /* Green background */
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+#certification-section h2 {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+#certification-section ul {
+  list-style-type: none;
+  padding: 0;
+  font-size: 18px;
+  line-height: 1.8;
+}
+
+#certification-section img {
+  max-width: 90%;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+#contact-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 50px;
+  background: #f9f9f9;
+  font-family: Arial, sans-serif;
+  color: #333;
+  height: 80vh;
+}
+
+#contact-section h2 {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+#contact-section h1 {
+  font-size: 48px;
+  font-weight: bold;
+  margin: 0;
+}
+
+#contact-section p {
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+#contact-section a {
+  color: #333;
+  text-decoration: none;
+  font-size: 24px;
+  margin: 0 10px;
+}
+
+#contact-section a:hover {
+  color: #007bff; /* Change to blue on hover */
+}
+
+#contact-section img {
+  max-width: 400px;
+  width: 100%;
+  border-radius: 10px;
+  opacity: 0.9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 10vh;
+}
+
+.content {
+  flex: 1;
+}
+
+
+footer {
+  text-align: center;
+  padding: 15px 0;
+  background: #f1f1f1;
+  font-size: 14px;
+  color: #555;
+  position: relative;
+  box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
