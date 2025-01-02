@@ -15,6 +15,64 @@ export class AppComponent implements AfterViewInit {
 
   profilePicture: string = 'assets/public/lisong.png';
 
+  jobExperiences = [
+    {
+      title: 'Senior Account Receivable',
+      company: 'PT MOSTRANS GLOBAL DIGILOG',
+      duration: 'Jan 2022 - Present',
+      description:
+        'Responsible for managing accounts receivable, ensuring timely collections, and maintaining financial reports.',
+      tasks: [
+        'Developed a streamlined invoicing system.',
+        'Reduced overdue payments by 30% through improved communication.',
+        'Collaborated with sales teams for financial forecasting.',
+      ],
+      technologies: ['SAP', 'Microsoft Excel', 'Power BI'],
+      image:
+        'https://mostrans.co.id/CompanyProfile/static/media/logo-mostrans.ff215158.png',
+    },
+    {
+      title: 'Finance Staff',
+      company: 'PT ENSEVAL PUTERA MEGATRADING TBK',
+      duration: 'Jun 2021 - Dec 2021',
+      description:
+        'Assisted in financial operations, accounts payable, and preparing financial statements.',
+      tasks: [
+        'Automated repetitive accounting tasks.',
+        'Managed over 50 accounts payable entries daily.',
+      ],
+      technologies: ['SAP', 'Microsoft Excel'],
+      image:
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Logo_Enseval_Putera_Megatrading.png/220px-Logo_Enseval_Putera_Megatrading.png',
+    },
+    {
+      title: 'Internship',
+      company: 'DIREKTORAT JENDRAL PAJAK (KPP JAKARTA CAKUNG)',
+      duration: 'Sept 2019 - Mar 2020',
+      description:
+        'Supported tax officers in administrative tasks and document handling.',
+      tasks: [
+        'Processed taxpayer data efficiently.',
+        'Supported team during tax audits.',
+      ],
+      technologies: ['Microsoft Word', 'Microsoft Excel'],
+      image: 'https://pajak.go.id/sites/default/files/LogoDJP11%20%281%29.png',
+    },
+    {
+      title: 'Internship',
+      company: 'MAHKAMAH PELAYARAN (KELAPA GADING)',
+      duration: 'Sept 2019 - Mar 2020',
+      description:
+        'Provided administrative support and assisted in archiving legal documents.',
+      tasks: [
+        'Maintained case archives accurately.',
+        'Assisted during legal proceedings.',
+      ],
+      technologies: ['Microsoft Office', 'Archiving Systems'],
+      image: 'https://mahpel.dephub.go.id/web/images/logo-dephub-small.png',
+    },
+  ];
+
   currentJob: any[] = [
     {
       description: 'Exceeded AR collection targets with a 95% success rate'

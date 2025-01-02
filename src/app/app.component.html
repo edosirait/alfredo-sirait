@@ -213,80 +213,49 @@
   </div>
 </section>
 
-<section id="job-experience" class="fade-in slide-in">
-  <!-- Judul Section -->
-  <h2 class="section-title">Job Experience</h2>
+<section style="background: #eeeff1;" id="job-experience" class="fade-in slide-in">
+  <h1 class="text-4xl font-bold mb-8 text-center mt-4">Job Experience</h1>
 
-  <!-- Current Job -->
-  <div class="current-job fade-in">
-    <div class="current-job-info">
-      <h3>Current Job</h3>
-      <p class="company-name">PT MOSTRANS GLOBAL DIGILOG</p>
-      <h3 style="font-style: italic">Senior Account Receivable</h3>
-      <p>Jan 2022 - Present</p>
-    </div>
-    <div class="current-job-detail">
-      <ul>
-        <li *ngFor="let job of currentJob">{{ job.description }}</li>
-      </ul>
-    </div>
-    <img
-      src="https://mostrans.co.id/CompanyProfile/static/media/logo-mostrans.ff215158.png"
-      alt="Current Job Logo"
-      class="company-logo"
-    />
-  </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div
+      *ngFor="let job of jobExperiences"
+      class="bg-white shadow-lg rounded-lg p-6 flex flex-col relative overflow-hidden"
+    >
+      <!-- Shadow Decoration -->
+      <div class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-blue-500 to-purple-500"></div>
 
-  <!-- Job Grid -->
-  <div class="job-grid slide-in">
-    <div class="job-card fade-in">
-      <div class="job-date">
-        <h3>Jun 21 - Dec 21</h3>
-      </div>
-      <div class="job-card-header">
+      <h2 class="text-2xl font-bold mb-2">{{ job.title }}</h2>
+      <p class="text-sm text-muted-foreground mb-2">
+        <strong>Company:</strong> {{ job.company }}
+      </p>
+      <p class="text-sm text-muted-foreground mb-2">
+        <strong>Duration:</strong> {{ job.duration }}
+      </p>
+      <div class="mb-4">
         <img
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Logo_Enseval_Putera_Megatrading.png/220px-Logo_Enseval_Putera_Megatrading.png"
-          alt="Job Logo"
-          class="company-logo-small"
+          [src]="job.image"
+          [alt]="job.company"
+          class="w-10 object-contain rounded-md mb-4"
         />
-        <h3>PT ENSEVAL PUTERA MEGATRADING TBK</h3>
       </div>
-      <ul>
-        <li *ngFor="let job of firstJob">{{ job }}</li>
+      <p class="text-sm text-muted-foreground mb-4">{{ job.description }}</p>
+      <ul class="text-sm mb-4">
+        <li *ngFor="let task of job.tasks">
+          - {{ task }}
+        </li>
       </ul>
-    </div>
-
-    <div class="job-card fade-in">
-      <div class="job-date">
-        <h3>Sept 19 - Mar 20</h3>
+      <div class="flex gap-2 flex-wrap">
+      <span
+        *ngFor="let tech of job.technologies"
+        class="inline-block px-3 py-1 bg-gray-200 text-sm rounded-md"
+      >
+        {{ tech }}
+      </span>
       </div>
-      <div class="job-card-header">
-        <img
-          src="https://pajak.go.id/sites/default/files/LogoDJP11%20%281%29.png"
-          alt="Internship Logo"
-          class="company-logo-small"
-        />
-        <h3>DIREKTORAT JENDRAL PAJAK (KPP JAKARTA CAKUNG)</h3>
-      </div>
-      <ul>
-        <p class="internship-title">Internship</p>
-        <li *ngFor="let intern of intern1">{{ intern }}</li>
-      </ul>
-      <div class="job-card-header">
-        <img
-          src="https://mahpel.dephub.go.id/web/images/logo-dephub-small.png"
-          alt="Internship Logo"
-          class="company-logo-small"
-        />
-        <h3>MAHKAMAH PELAYARAN (KELAPA GADING)</h3>
-      </div>
-      <ul>
-        <p class="internship-title">Internship</p>
-        <li *ngFor="let task of intern2">{{ task }}</li>
-      </ul>
     </div>
   </div>
 </section>
+
 
 <section
   id="certification-section"
