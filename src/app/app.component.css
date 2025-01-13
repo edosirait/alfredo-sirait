@@ -135,11 +135,13 @@
   }
 
   #about-section {
-    padding: 80px 20px; /* Sesuaikan padding untuk layar kecil */
+    padding: 80px 20px;
+    display: flex;
+    justify-items: center;
   }
 
   #job-experience {
-    padding: 20px;
+    padding: 10px;
   }
 
   .current-job {
@@ -264,6 +266,7 @@
 }
 
 #job-experience {
+  padding: 25px;
   h1 {
     font-size: 2.5rem;
     font-weight: bold;
@@ -544,4 +547,14 @@ footer {
   position: relative;
   box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
   z-index: 10;
+}
+
+@media screen and (max-width: 768px) {
+  .hamburger-menu {
+    display: block;
+    z-index: 10000;
+  }
+  .top-nav {
+    display: none;
+  }
 }
