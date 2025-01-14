@@ -59,9 +59,22 @@
 }
 
 #about-section .fade-in {
-  text-align: center;
-  margin-bottom: 40px;
-  margin-top: 40px; /* Tambahkan jarak ke atas */
+  position: relative;
+  min-height: 100vh;
+  padding: 50px;
+  background: #eeeff1;
+  font-family: Arial, sans-serif;
+  color: #333333;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+  transition: all 0.3s ease-in-out;
+
+  /* Animasi Slide-in */
+  opacity: 0;
+  transform: translateY(2px);
 }
 
 
@@ -102,7 +115,7 @@
   }
 
   .top-nav button {
-    font-size: 14px; /* Ukuran tombol lebih kecil */
+    font-size: 14px;
   }
 
   #about-section div {
@@ -110,7 +123,7 @@
   }
 
   #about-section .row {
-    flex-direction: column; /* Kolom menjadi satu arah vertikal */
+    flex-direction: column;
     gap: 20px;
   }
 
@@ -135,9 +148,8 @@
   }
 
   #about-section {
-    padding: 80px 20px;
-    display: flex;
-    justify-items: center;
+    padding: 15px;
+    font-size: 14px;
   }
 
   #job-experience {
