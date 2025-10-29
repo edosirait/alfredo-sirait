@@ -1,0 +1,562 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+/* =========================
+   JOB SECTION BASE LAYOUT
+========================= */
+.job-section {
+  display: flex;
+  @include fill-viewport;
+  background: transparent;
+  color: var(--color-text-primary);
+  box-sizing: border-box;
+  overflow-x: hidden;
+  /* ==== SIDEBAR KIRI ==== */
+  .job-sidebar {
+    width: 20%;
+    min-width: 220px;
+    border-right: 1px solid var(--color-border);
+    padding: 2rem;
+    background: var(--color-bg-section);
+    position: sticky;
+    top: var(--header-height, 64px);
+    @include fill-viewport;
+    overflow: hidden;
+    z-index: 2;
+    opacity: 0;
+    animation: slideInLeft 0.8s ease-out forwards;
+    animation-delay: 0.15s;
+
+    .sidebar-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--color-accent);
+      margin-bottom: 1.5rem;
+      animation: fadeIn 0.8s ease forwards;
+      animation-delay: 0.3s;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        padding: 10px 14px;
+        border-radius: 8px;
+        margin-bottom: 0.5rem;
+        cursor: pointer;
+        transition: background 0.3s ease, color 0.3s ease, transform 0.2s;
+
+        &:hover {
+          background: var(--color-bg-card);
+          color: var(--color-accent);
+          transform: translateX(4px);
+        }
+
+        &.active {
+          background: var(--color-accent);
+          color: #fff;
+          font-weight: 600;
+          transform: scale(1.02);
+        }
+      }
+    }
+  }
+
+  /* ==== KONTEN UTAMA ==== */
+  .job-content {
+    flex: 1;
+    padding: 3rem 4rem;
+    overflow: auto;
+    scroll-behavior: smooth;
+    @include fill-viewport;
+    opacity: 0;
+    animation: slideInUp 1.2s ease-out forwards;
+    animation-delay: 0.25s;
+    transition: all 0.4s ease;
+
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* Internet Explorer / Edge lama */
+
+    &::-webkit-scrollbar {
+      display: none; /* Chrome, Safari */
+    }
+
+    .content-wrapper {
+      max-width: 900px;
+      margin: 0 auto;
+      padding-bottom: 3rem;
+      transition: all 0.3s ease;
+
+      .job-title {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 0.3rem;
+        animation: fadeInUp 0.8s ease both;
+
+        .company-name {
+          color: var(--color-accent);
+          margin-left: 0.5rem;
+          display: inline-block;
+          animation: colorShift 3s infinite alternate;
+        }
+      }
+
+      .duration {
+        font-size: 0.95rem;
+        color: var(--color-text-secondary);
+        margin-bottom: 1.5rem;
+        opacity: 0;
+        animation: fadeIn 1s ease forwards;
+        animation-delay: 0.5s;
+      }
+
+      .description {
+        font-size: 1.1rem;
+        color: var(--color-text-secondary);
+        line-height: 1.6;
+        margin-bottom: 2rem;
+        opacity: 0;
+        animation: fadeIn 1s ease forwards;
+        animation-delay: 0.6s;
+      }
+
+      .section {
+        margin-bottom: 2rem;
+        opacity: 0;
+        animation: fadeInUp 1s ease forwards;
+        animation-delay: 0.8s;
+
+        h3 {
+          font-size: 1.2rem;
+          font-weight: 600;
+          margin-bottom: 0.5rem;
+          color: var(--color-accent);
+        }
+
+        ul {
+          list-style: disc;
+          margin-left: 1.5rem;
+          color: var(--color-text-secondary);
+          line-height: 1.5;
+        }
+
+        .tech-tags,
+        .env-tags {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.5rem;
+
+          span {
+            padding: 6px 12px;
+            border-radius: 10px;
+            background: var(--color-bg-card);
+            color: var(--color-text-primary);
+            border: 1px solid var(--color-border);
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+
+            &:hover {
+              background: var(--color-accent);
+              color: #fff;
+              transform: scale(1.05);
+            }
+          }
+        }
+      }
+
+    }
+  }
+
+  /* ==== SIDEBAR KANAN ==== */
+  .job-info {
+    width: 20%;
+    min-width: 220px;
+    border-left: 1px solid var(--color-border);
+    padding: 2rem;
+    background: var(--color-bg-section);
+    position: sticky;
+    top: var(--header-height, 64px);
+    @include fill-viewport;
+    overflow: hidden;
+    opacity: 0;
+    animation: slideInRight 0.8s ease-out forwards;
+    animation-delay: 0.35s;
+
+    .info-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      transition: transform 0.3s ease;
+
+      .company-logo {
+        width: 200px;
+        height: 80px;
+        object-fit: contain;
+        border-radius: 12px;
+        margin-bottom: 1rem;
+        transition: transform 0.4s ease, filter 0.4s ease;
+
+        &:hover {
+          transform: scale(1.08);
+          filter: brightness(1.2);
+        }
+      }
+
+      .visit-link {
+        color: var(--color-accent);
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s ease;
+
+        &:hover {
+          text-decoration: underline;
+          transform: translateY(-2px);
+        }
+      }
+    }
+  }
+
+  /* =========================
+   RESPONSIVE SECTION (MOBILE)
+  ========================= */
+  @media (max-width: 702px) {
+    /* Nonaktifkan flex layout agar aside tidak memengaruhi job-content */
+    .job-section {
+      display: block;
+      position: relative;
+      overflow: visible;
+    }
+
+    /* Tombol toggle */
+    .toggle-sidebar-btn {
+      position: fixed;
+      top: 80px;
+      left: 16px;
+      z-index: 50;
+      background: var(--color-accent);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 0.5rem 0.75rem;
+      cursor: pointer;
+      font-size: 1.2rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      transition: background 0.3s ease;
+    }
+
+    /* Sidebar overlay version */
+    .job-sidebar {
+      position: fixed;
+      top: 64px;
+      left: 0;
+      width: 80%;
+      max-width: 300px;
+      height: calc(100vh - 64px);
+      background: var(--color-bg-section);
+      border-right: 1px solid var(--color-border);
+      padding: 1.5rem;
+      transform: translateX(-105%);
+      opacity: 0;
+      transition: transform 0.4s ease-in-out, opacity 0.4s ease;
+      animation: none;
+      z-index: 40;
+      box-shadow: 2px 0 10px rgba(0, 0, 0, 0.6);
+      overflow-y: auto;
+    }
+
+    .job-sidebar.active {
+      transform: translateX(0);
+      opacity: 1;
+    }
+
+    /* Overlay */
+    .overlay {
+      position: fixed;
+      top: 64px;
+      left: 0;
+      width: 100%;
+      height: calc(100vh - 64px);
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(3px);
+      opacity: 0;
+      animation: fadeIn 0.3s ease forwards;
+      z-index: 30;
+    }
+
+    .job-content {
+      overflow-y: auto !important;
+      max-height: calc(100vh - 120px);
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .job-content,
+    .job-info {
+      padding: 1rem 1.25rem;
+    }
+  }
+
+
+
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes colorShift {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(30deg);
+  }
+}
+
+/* Overlay background saat sidebar aktif */
+.overlay {
+  position: fixed;
+  top: 64px;
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 64px);
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 20;
+  opacity: 0;
+  backdrop-filter: blur(3px);
+}
+
+.docs-example-viewer {
+  background: #1e1e1e;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-top: 1rem;
+  color: #fff;
+  position: relative;
+
+  .example-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: .75rem;
+    font-size: .9rem;
+    color: #9cdcfe;
+  }
+
+  .copy-btn {
+    background: #2d2d2d;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: .25rem .5rem;
+    cursor: pointer;
+    transition: all .3s ease;
+
+    &:hover {
+      background: #007acc;
+    }
+  }
+
+  pre {
+    margin: 0;
+    overflow-x: auto;
+    background: transparent;
+  }
+
+  .docs-example-viewer pre code {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.9rem;
+    color: #dcdcdc;
+  }
+
+}
+
+/* =========================
+   NO ACCESS BLOCK STYLE
+========================= */
+.no-access-block {
+  background: var(--color-bg-section);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  color: var(--color-text-primary);
+  margin-top: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  animation: fadeInUp 0.6s ease-out forwards;
+  opacity: 0;
+
+  p {
+    margin: 0;
+    line-height: 1.6;
+    font-size: 1rem;
+
+    &:first-child {
+      font-weight: 600;
+      color: var(--color-accent);
+      margin-bottom: 0.5rem;
+    }
+
+    &:last-child {
+      font-size: 0.9rem;
+      color: var(--color-text-secondary);
+    }
+  }
+}
+
+.project-block {
+  margin-bottom: 2.5rem;
+  padding-bottom: 2rem;
+  animation: fadeInUp 0.6s ease-out forwards;
+  opacity: 0;
+
+  .project-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--color-accent);
+    margin-bottom: 0.5rem;
+
+    .project-index {
+      color: var(--color-text-secondary);
+      margin-right: 0.25rem;
+    }
+  }
+
+  .project-description {
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+    margin-bottom: 1rem;
+  }
+
+  .project-divider {
+    border: 0;
+    border-top: 1px solid var(--color-border);
+    margin-top: 1.5rem;
+  }
+}
+
+.project-preview {
+  text-align: center;
+  margin-top: 4rem;
+  margin-bottom: 1rem;
+
+  .project-preview-img {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 10px;
+    border: 1px solid var(--color-border);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: #fff;
+
+    &:hover {
+      transform: scale(1.03);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+  }
+
+  .project-preview-text {
+    margin-top: 0.75rem;
+
+    .project-preview-link {
+      font-weight: 600;
+      color: var(--color-accent);
+      text-decoration: none;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: var(--color-text-primary);
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+/*  Special rule for dark mode */
+body.dark-mode .project-preview-img {
+  background: #ffffff; /* white background in dark mode */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.project-preview-text {
+  margin-top: 0.75rem;
+
+  .project-preview-link {
+    font-weight: 600;
+    color: var(--color-accent);
+    text-decoration: none;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: var(--color-text-primary);
+      text-decoration: underline;
+    }
+  }
+}

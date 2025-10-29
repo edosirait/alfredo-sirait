@@ -1,0 +1,51 @@
+<header class="header" [class.scrolled]="isScrolled">
+  <!-- LEFT SIDE -->
+  <div class="left-section">
+    <div class="logo" routerLink="/about">Alfredo Sirait</div>
+    <button class="theme-toggle" (click)="toggleTheme()">
+      <i [class]="isDarkMode ? 'fas fa-sun' : 'fas fa-moon'"></i>
+      <span class="mode-info">{{ isDarkMode ? 'Light Mode' : 'Dark Mode' }}</span>
+    </button>
+  </div>
+
+  <!-- RIGHT SIDE (NAVIGATION) -->
+  <nav class="nav-links" [class.open]="menuOpen">
+    <a
+      routerLink="/about"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      (click)="menuOpen = false"
+    >
+      About
+    </a>
+
+    <a
+      routerLink="/job"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      (click)="menuOpen = false"
+    >
+      Experience
+    </a>
+
+    <a
+      routerLink="/contact"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      (click)="menuOpen = false"
+    >
+      Contact
+    </a>
+  </nav>
+
+  <!-- Overlay background -->
+  <div class="menu-overlay" *ngIf="menuOpen" (click)="menuOpen = false"></div>
+
+  <!-- MOBILE MENU ICON -->
+  <button class="hamburger" (click)="toggleMenu()">
+    <i class="fas" [class.fa-bars]="!menuOpen" [class.fa-times]="menuOpen"></i>
+  </button>
+
+  <!-- Scroll progress bar -->
+  <div class="scroll-progress" [style.width.%]="scrollProgress"></div>
+</header>

@@ -1,0 +1,221 @@
+[
+  {
+    "title": "Full Stack Developer - SSL Glossys (Global Operation and Shipping System)",
+    "company": "Samudera Shipping Line Ltd",
+    "duration": "March 2025 – Present",
+    "location": "Remote (Singapore)",
+    "description": "Designed and developed a comprehensive logistics and vessel management platform for a shipping company. The system manages bookings, Bill of Lading (BL), freight control, master data, and EDI transmissions, enabling seamless coordination between operational, finance, and scheduling teams while enhancing transparency and data accuracy across the organization.",
+    "image": "assets/img/logo-samudera.png",
+    "url": "https://samudera.id/",
+    "themeColor": "#7c3aed",
+    "tasks": [
+      "Create Local Charge Master Module (FE & BE)",
+      "Create Transaction Local Charge Module (FE & BE)",
+      "Enhancement existing feature and maintaining existing",
+      "Create Report using Jasper",
+      "Developed an interactive freight cost management module with real-time data validation.",
+      "Migrated AngularJS-based legacy systems to Angular 10+ with improved UX consistency.",
+      "Integrated Spring Boot microservices for master data and transaction sync.",
+      "Worked closely with business analysts to digitize manual data-entry workflows."
+    ],
+    "achievements": [
+      "Enhanced user interface and UX consistency.",
+      "Optimized data retrieval and validation processes in Local Charge and Transaction Charge modules, improving response speed and reducing manual corrections.",
+      "Developed integrated Jasper reports for billing and freight control, enabling automated financial summaries.",
+      "Improved synchronization between master data and transactional modules through Spring Boot microservices."
+    ],
+    "technologies": ["Angular 6", "Java", "Spring Boot", "PostgreSQL", "Jasper"],
+    "environment": [
+      "Agile / Scrum",
+      "GitHub",
+      "RESTful APIs",
+      "Agile / Scrum",
+      "Bitbucket",
+      "Jira",
+      "Satori"
+    ],
+    "exampleLocalChargeMasterCode": {
+      "typescript": "import { Component, OnInit } from '@angular/core';\nimport { BaseService } from 'src/app/core/services/base.service';\n\ninterface LocalCharge {\n  valid: string;\n  bound: string;\n  containerOwnership: string;\n  perCode: string;\n  containerStatus: string;\n  chargeCode: string;\n  currency: string;\n  unitAmount: string;\n  prepaidCollect: string;\n  pop: string;\n  effectiveDate: string;\n  expiryDate: string;\n}\n\n@Component({\n  selector: 'app-local-charge-master',\n  templateUrl: './local-charge-master.component.html',\n  styleUrls: ['./local-charge-master.component.scss']\n})\nexport class LocalChargeMasterComponent implements OnInit {\n  isLoading = false;\n  charges: LocalCharge[] = [];\n\n  constructor(private baseService: BaseService) {}\n\n  ngOnInit(): void {\n    this.loadCharges();\n  }\n\n  /** Dummy loader to simulate backend API call */\n  loadCharges(): void {\n    this.isLoading = true;\n\n    // Simulate API delay\n    setTimeout(() => {\n      this.charges = [\n        { valid: 'Y', bound: 'I', containerOwnership: 'COC', perCode: 'R20', containerStatus: 'F', chargeCode: 'BLF', currency: 'SGD', unitAmount: '$180.00', prepaidCollect: 'P', pop: 'SGSIN', effectiveDate: '10-10-2025', expiryDate: '31-10-2025' },\n        { valid: 'N', bound: 'I', containerOwnership: 'COC', perCode: 'D45', containerStatus: 'F', chargeCode: 'BLF', currency: 'SGD', unitAmount: '$122.00', prepaidCollect: 'C', pop: 'SGSIN', effectiveDate: '17-09-2025', expiryDate: '18-09-2025' },\n        { valid: 'Y', bound: 'I', containerOwnership: 'COC', perCode: 'ALL', containerStatus: 'E', chargeCode: 'CMX', currency: 'SGD', unitAmount: '$6.00', prepaidCollect: 'C', pop: 'SGSIN', effectiveDate: '01-09-2025', expiryDate: '14-09-2025' }\n      ];\n\n      this.isLoading = false;\n    }, 1000);\n  }\n}\n",
+      "html": "<div class='local-charge-master p-6 bg-white dark:bg-gray-900 rounded-2xl shadow-md'>\n  <h2 class='text-xl font-semibold mb-4 text-gray-700 dark:text-gray-100'>LOCAL CHARGE MASTER</h2>\n\n  <!-- 🔹 Form Section -->\n  <form class='grid grid-cols-6 gap-4 mb-6'>\n    <div class='col-span-2'>\n      <label class='block font-medium mb-1'>Bound</label>\n      <div class='flex gap-4'>\n        <label><input type='radio' name='bound' checked /> Inbound</label>\n        <label><input type='radio' name='bound' /> Outbound</label>\n      </div>\n    </div>\n\n    <div>\n      <label class='block font-medium mb-1'>Container Ownership</label>\n      <select class='w-full border p-2 rounded-md'>\n        <option>COC</option>\n        <option>SOC</option>\n      </select>\n    </div>\n\n    <div>\n      <label class='block font-medium mb-1'>Currency *</label>\n      <input type='text' class='w-full border p-2 rounded-md' value='SGD' />\n    </div>\n\n    <div>\n      <label class='block font-medium mb-1'>Valid?</label>\n      <input type='checkbox' checked />\n    </div>\n\n    <div>\n      <label class='block font-medium mb-1'>Unit Amount *</label>\n      <input type='number' class='w-full border p-2 rounded-md' value='0.00' />\n    </div>\n\n    <div class='col-span-2'>\n      <label class='block font-medium mb-1'>Charge *</label>\n      <input type='text' class='w-full border p-2 rounded-md' placeholder='Search...' />\n    </div>\n\n    <div class='col-span-2'>\n      <label class='block font-medium mb-1'>Place of Payment *</label>\n      <input type='text' class='w-full border p-2 rounded-md' value='SINGAPORE' />\n    </div>\n\n    <div>\n      <label class='block font-medium mb-1'>Effective Date *</label>\n      <input type='date' class='w-full border p-2 rounded-md' />\n    </div>\n\n    <div>\n      <label class='block font-medium mb-1'>Expiry Date *</label>\n      <input type='date' class='w-full border p-2 rounded-md' />\n    </div>\n  </form>\n\n  <!-- 🔹 Table Section -->\n  <div class='overflow-x-auto'>\n    <table class='min-w-full border text-sm border-gray-300 dark:border-gray-700'>\n      <thead class='bg-gray-100 dark:bg-gray-800'>\n        <tr>\n          <th class='px-3 py-2'>No.</th>\n          <th class='px-3 py-2'>Valid</th>\n          <th class='px-3 py-2'>Bound</th>\n          <th class='px-3 py-2'>Container Ownership</th>\n          <th class='px-3 py-2'>Per Code</th>\n          <th class='px-3 py-2'>Container Status</th>\n          <th class='px-3 py-2'>Charge Code</th>\n          <th class='px-3 py-2'>Currency</th>\n          <th class='px-3 py-2'>Unit Amount</th>\n          <th class='px-3 py-2'>Prepaid / Collect</th>\n          <th class='px-3 py-2'>POP</th>\n          <th class='px-3 py-2'>Effective Date</th>\n          <th class='px-3 py-2'>Expiry Date</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr *ngFor='let c of charges; let i = index' class='text-center border-t dark:border-gray-700'>\n          <td>{{ i + 1 }}</td>\n          <td>{{ c.valid }}</td>\n          <td>{{ c.bound }}</td>\n          <td>{{ c.containerOwnership }}</td>\n          <td>{{ c.perCode }}</td>\n          <td>{{ c.containerStatus }}</td>\n          <td>{{ c.chargeCode }}</td>\n          <td>{{ c.currency }}</td>\n          <td>{{ c.unitAmount }}</td>\n          <td>{{ c.prepaidCollect }}</td>\n          <td>{{ c.pop }}</td>\n          <td>{{ c.effectiveDate }}</td>\n          <td>{{ c.expiryDate }}</td>\n        </tr>\n      </tbody>\n    </table>\n  </div>\n</div>"
+    }
+  },
+  {
+    "title": "Senior Frontend Developer",
+    "company": "POS Malaysia",
+    "duration": "July 2024 – March 2025",
+    "location": "Jakarta, Indonesia (Remote Collaboration with Malaysia Team, India - Pakistan)",
+    "description": "Developed and maintained features for the Pos Malaysia web application, focusing on creating\nseamless customer experiences through modern Angular 16 development practices. Key contributions\nincluded implementing the Window Delivery feature and addressing bug fixes to enhance application\nperformance and reliability.",
+    "image": "https://www.pos.com.my/assets/images/pos_logo.svg",
+    "url": "https://www.pos.com.my/",
+    "themeColor": "#9b6bff",
+    "tasks": [
+      "Develop Feature, slicing UI from figma with Angular 16.",
+      "Create reusable component and develop feature as per figma.",
+      "Developing modular component.",
+      "Using state management RXJS.",
+      "Developing with pipe, component and directive.",
+      "Bind data dynamically to the components based on requirements.",
+      "Use Angular services for API calls and manage state effectively.",
+      "Global Pagination Service: Centralized service to handle pagination logic and integrate it with API responses.",
+      "Develop an HTTP interceptor to handle cases where users try to access restricted pages.",
+      "Redirect unauthorized users to a \"No Access\" or \"Login Required\" page.",
+      "Create a reusable table component with sorting, filtering, and pagination functionalities."
+    ],
+    "achievements": [
+      "Enhanced user interface and UX consistency.",
+      "Code readable, maintainable and reusable component for each the other.",
+      "Module used release to prod."
+    ],
+    "technologies": [
+      "Angular",
+      "TypeScript",
+      "TailwindCSS",
+      "RxJS",
+      "PrimeNG"
+    ],
+    "environment": [
+      "Agile / Scrum",
+      "Github",
+      "Jira",
+      "Bitbucket",
+      "Confluence",
+      "Figma Design System",
+      "RESTful APIs"
+    ],
+    "exampleLocalChargeMasterCode": null
+  },
+  {
+    "title": "Software Engineer",
+    "company": "Photon Interactive Indonesia",
+    "duration": "September 2022 – July 2024",
+    "location": "Jakarta, Indonesia (Collaboration with India and US team)",
+    "image": "https://www.photon.com/themes/custom/photon/images/logo_photon.svg",
+    "url": "https://www.photon.com/",
+    "themeColor": "#9333ea",
+    "description": "Worked on multiple international web and mobile application projects focusing on performance, modular architecture, and clean code practices.",
+    "projects": [
+      {
+        "name": "Texas Roadhouse - Mobile Apps IONIC Angular",
+        "description": "Developed the initial features of a Cellular POS application for Texas Roadhouse, focusing on food ordering and application which will have food ordering application features and features that make it easy for consumers reliability using Ionic and Angular.",
+        "technologies": ["Angular 15", "Ionic", "Ngrx", "Cordova", "Azure DevOps", ".NET", "Karma", "Jasmine"],
+        "tasks": [
+          "Developed mobile applications from scratch using Ionic with Angular 15.",
+          "Created document props and API contract specs in Azure DevOps.",
+          "Developed reusable UI components and implemented modular design patterns.",
+          "Integrated unit testing using Karma and Jasmine Testing Library.",
+          "Implemented state management using NGRX for predictable data flow.",
+          "Collaborated with India team for feature development and client reviews.",
+          "Achieved 80%+ code reuse through atomic design principles and component mapping."
+        ],
+        "achievements": [
+          "Create code form scratch with atomic design principal",
+          "Enhanced user interface and UX consistency.",
+          "New skill with NGRX (state management) for maintain real time data",
+          "Code coverage and unit test up to 80%.",
+          "Code readable, maintainable and reusable component for each the other.",
+          "App used release to prod."
+        ],
+        "environment": [
+          "Agile / Scrum",
+          "Azure Devops",
+          "Confluence",
+          "Figma Design System",
+          "RESTful APIs"
+        ],
+        "image": "https://texasroadhouse.com.ph/cdn/shop/files/Texas-Roadhouse-logo_a6ce52cc-5c8c-4956-8546-7584d206f2e9.png?v=1676002277&width=200",
+        "url": "https://texasroadhouse.com/"
+      },
+      {
+        "name": "Volvo Cars - Web Application ReactJS",
+        "description": "Built web applications to simplify car purchasing workflows — from search and comparison to payment processing. This project focuses on developing Web applications that aim to make it easier for users to search,\norder, pay, credit and process buying of car. As a member of the front-end development team, I am\nresponsible for making sure users can use the app easily",
+        "technologies": ["ReactJS", "Next.js", "Redux", "SSR", "Node.js"],
+        "tasks": [
+          "Developed front-end modules using React and Next.js.",
+          "Created detailed comparison and filtering components.",
+          "Integrated Redux for state management and async data flow.",
+          "Implemented SSR and analytics dashboards for performance tracking.",
+          "Fix feature defect.",
+          "Fix code smell standardization.",
+          "Collaborated with QA for bug tracking and standardization fixes."
+        ],
+        "achievements": [
+          "Enhanced user interface and UX consistency.",
+          "Using NX for micro FE",
+          "App used release to prod."
+        ],
+        "environment": [
+          "Agile / Scrum",
+          "Github",
+          "Jira",
+          "Bitbucket",
+          "Confluence",
+          "Figma Design System",
+          "RESTful APIs"
+        ],
+        "image": "https://volvocars.com/static/shared/images/volvo-spread-wordmark.svg",
+        "url": "https://volvocars.com/us/"
+      },
+      {
+        "name": "Avis Car Rental - Mobile Apps React Native",
+        "description": "Developed mobile-based applications for users to search, order, and manage car rental transactions efficiently.",
+        "technologies": ["React Native", "Redux", "Jest", "TypeScript", "REST API"],
+        "tasks": [
+          "Developed and maintained React Native application for car rental search and booking.",
+          "Created reusable dropdown and component libraries with dynamic data binding.",
+          "Implemented unit testing using Jest and React Native Testing Library.",
+          "Supported bug fixing and feature delivery cycles with QA and backend teams.",
+          "Ensured app stability and code standardization across versions."
+        ],
+        "achievements": [
+          "Enhanced user interface and UX consistency.",
+          "Using Redux for global state",
+          "App used release to prod."
+        ],
+        "environment": [
+          "Agile / Scrum",
+          "Github",
+          "Jira",
+          "Confluence",
+          "Figma Design System",
+          "RESTful APIs",
+          "Mobile Device"
+        ],
+        "image": "https://avis.com/etc/designs/avis/common/clientlib/images/avis_logo_red@2x.png",
+        "url": "https://avis.com/en/home"
+      },
+      {
+        "name": "GoTo Foods - Mobile Apps React Native",
+        "description": "Developed mobile-based applications for users to search, order, and process online order of food transactions efficiently.",
+        "technologies": ["React Native", "Redux", "Jest", "TypeScript", "REST API"],
+        "tasks": [
+          "Develop and maintain mobile applications using React Native.",
+          "Create reusable component and develop feature as per figma.",
+          "Created a series of unit tests to ensure that the projects passed all quality benchmarks.",
+          "Create Notifications feature.",
+          "Config Firebase Cloud Messaging using React Native Firebase.",
+          "Communicate with other staff (India Team) to create new features.",
+          "Grooming Sessions with US client.",
+          "Unit testing and coverage"
+        ],
+        "achievements": [
+          "Took ownership of a high-priority project that was in a critical state, fixing system instabilities and redesigning the user interface to ensure smooth functionality and successful user adoption.",
+          "Enhanced user interface and UX consistency.",
+          "Using Redux for global state",
+          "App used release to prod."
+        ],
+        "environment": [
+          "Agile / Scrum",
+          "Github",
+          "Jira",
+          "Confluence",
+          "Figma Design System",
+          "RESTful APIs",
+          "Mobile Device"
+        ],
+        "image": "https://www.gotofoods.com/wp-content/uploads/2024/01/GOTO-Foods-Logo-Stack-1.svg",
+        "url": "https://www.gotofoods.com/"
+      }
+    ]
+  }
+
+]

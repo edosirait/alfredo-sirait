@@ -1,0 +1,31 @@
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin transition-base {
+  transition: all 0.3s ease;
+}
+
+@mixin card-style {
+  background: var(--color-bg-card);
+  color: var(--color-text-primary);
+  border-radius: 12px;
+  box-shadow: 0 6px 12px var(--color-shadow);
+}
+
+
+/**
+ * ✅ Reusable mixin untuk membuat elemen menyesuaikan tinggi viewport
+ * otomatis dikurangi tinggi header dan footer.
+ *
+ * @param {Number | String} $header - tinggi header (default: 64px)
+ * @param {Number | String} $footer - tinggi footer (default: 56px)
+ */
+@mixin fill-viewport($header: 64px, $footer: 56px) {
+  height: calc(100vh - #{$header} - #{$footer});
+  min-height: calc(100vh - #{$header} - #{$footer});
+  overflow: auto;
+  box-sizing: border-box;
+}

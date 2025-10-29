@@ -1,0 +1,43 @@
+@use 'variables' as *;
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  font-family: 'Inter', 'Poppins', sans-serif;
+  background-color: var(--color-bg-main);
+  color: var(--color-text-primary);
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px 20px 20px 20px;
+}
+
+app-root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  border-radius: 20px 20px 20px 20px;
+}
+
+/* Offset header */
+main,
+.router-outlet {
+  flex: 1;
+  padding-top: 64px;
+}
+
+footer {
+  margin-top: auto;
+  border-radius: 0 0 20px 20px;
+}
+
+* {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}

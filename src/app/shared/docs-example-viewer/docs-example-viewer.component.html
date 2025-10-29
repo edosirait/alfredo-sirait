@@ -1,0 +1,22 @@
+<div class="docs-example-viewer">
+  <div class="example-header">
+    <span class="file-name">{{ fileName }}</span>
+
+    <div class="header-buttons">
+      <button class="toggle-btn" (click)="toggleVisibility()">
+        {{ isVisible ? 'Hide' : 'Show' }} Code
+      </button>
+      <button *ngIf="language === 'html'" class="preview-btn" (click)="openPreview()">
+        Open Preview
+      </button>
+      <button class="copy-btn" (click)="copyCode()">
+        {{ copySuccess ? 'Copied!' : 'Copy' }}
+      </button>
+    </div>
+  </div>
+
+  <!-- Code block -->
+  <div class="example-body" [class.hidden]="!isVisible">
+    <pre><code [attr.class]="'language-' + language">{{ code }}</code></pre>
+  </div>
+</div>

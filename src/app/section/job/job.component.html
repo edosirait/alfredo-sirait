@@ -1,0 +1,200 @@
+<div class="job-section" [class.mobile-sidebar-open]="isSidebarOpen">
+  <!-- Overlay -->
+  <div class="overlay" *ngIf="isSidebarOpen && isMobileView" (click)="closeSidebar()"></div>
+
+  <!-- Toggle Button -->
+  <button
+    class="toggle-sidebar-btn"
+    *ngIf="isMobileView"
+    (click)="toggleSidebar()"
+    aria-label="Toggle Experience Menu"
+    appDraggable
+  >
+    <i [class]="isSidebarOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-bars'"></i>
+  </button>
+
+  <!-- Sidebar Kiri -->
+  <aside
+    class="job-sidebar"
+    *ngIf="!isMobileView || isSidebarOpen"
+    [class.active]="isSidebarOpen"
+  >
+    <h2 class="sidebar-title">Experience</h2>
+    <ul>
+      <li
+        *ngFor="let job of jobExperiences"
+        (click)="selectJob(job)"
+        [class.active]="selectedJob?.company === job.company"
+        [style.--accent]="job.themeColor"
+      >
+        {{ job.company }}
+      </li>
+    </ul>
+  </aside>
+
+  <!-- Konten Tengah -->
+  <section class="job-content" *ngIf="selectedJob">
+    <div class="content-wrapper">
+      <h1 class="job-title">
+        {{ selectedJob.title }}
+        <span class="company-name" [style.color]="selectedJob.themeColor">
+        {{ selectedJob.company }}
+      </span>
+      </h1>
+
+      <p class="duration">
+        {{ selectedJob.duration }} &nbsp;·&nbsp; {{ selectedJob.location }}
+      </p>
+
+      <p class="description">{{ selectedJob.description }}</p>
+
+      <!-- ========================= -->
+      <!--  CASE 1: Multiple Projects -->
+      <!-- ========================= -->
+      <ng-container *ngIf="selectedJob.projects?.length > 0; else singleRole">
+        <div
+          class="project-block"
+          *ngFor="let project of selectedJob.projects; let i = index"
+        >
+          <h2 class="project-title">
+            <span class="project-index">{{ i + 1 }}.</span> {{ project.name }}
+          </h2>
+          <p class="project-description">{{ project.description }}</p>
+
+          <div class="section">
+            <h3>Key Responsibilities</h3>
+            <ul>
+              <li *ngFor="let task of project.tasks">{{ task }}</li>
+            </ul>
+          </div>
+
+          <div class="section" *ngIf="project.achievements?.length">
+            <h3>Achievements</h3>
+            <ul>
+              <li *ngFor="let ach of project.achievements">{{ ach }}</li>
+            </ul>
+          </div>
+
+          <div class="section" *ngIf="project.technologies?.length">
+            <h3>Technologies Used</h3>
+            <div class="tech-tags">
+              <span *ngFor="let tech of project.technologies">{{ tech }}</span>
+            </div>
+          </div>
+
+          <div class="section" *ngIf="project.environment?.length">
+            <h3>Environment</h3>
+            <div class="env-tags">
+          <span *ngFor="let env of project.environment">
+            {{ env }}
+          </span>
+            </div>
+        </div>
+
+          <div class="project-preview" *ngIf="project.image || project.url">
+            <img
+              *ngIf="project.image"
+              [src]="project.image"
+              [alt]="project.name"
+              class="project-preview-img"
+            />
+            <p class="project-preview-text">
+              <a
+                *ngIf="project.url"
+                [href]="project.url"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="project-preview-link"
+              >
+                🔗 Click to preview or see the website
+              </a>
+            </p>
+          </div>
+
+          <hr class="project-divider" />
+
+          <hr class="project-divider" />
+        </div>
+      </ng-container>
+
+      <!-- ========================= -->
+      <!--  CASE 2: Single Role (default) -->
+      <!-- ========================= -->
+      <ng-template #singleRole>
+        <div class="section">
+          <h3>Key Responsibilities</h3>
+          <ul>
+            <li *ngFor="let task of selectedJob.tasks">{{ task }}</li>
+          </ul>
+        </div>
+
+        <div class="section" *ngIf="selectedJob.achievements?.length">
+          <h3>Achievements</h3>
+          <ul>
+            <li *ngFor="let ach of selectedJob.achievements">{{ ach }}</li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <h3>Technologies Used</h3>
+          <div class="tech-tags">
+          <span *ngFor="let tech of selectedJob.technologies">
+            {{ tech }}
+          </span>
+          </div>
+        </div>
+
+        <div class="section" *ngIf="selectedJob.environment?.length">
+          <h3>Environment</h3>
+          <div class="env-tags">
+          <span *ngFor="let env of selectedJob.environment">
+            {{ env }}
+          </span>
+          </div>
+        </div>
+
+        <div *ngIf="selectedJob?.exampleLocalChargeMasterCode; else noAccessBlock">
+          <docs-example-viewer
+            [fileName]="'src/app/pages/local-charge/local-charge-master.component.html'"
+            language="html"
+            [code]="selectedJob?.exampleLocalChargeMasterCode?.html">
+          </docs-example-viewer>
+
+          <docs-example-viewer
+            fileName="src/app/pages/local-charge/local-charge-master.component.ts"
+            language="typescript"
+            [code]="selectedJob?.exampleLocalChargeMasterCode?.typescript">
+          </docs-example-viewer>
+        </div>
+      </ng-template>
+
+      <!-- 🔹 Fallback for missing code -->
+      <ng-template #noAccessBlock>
+        <div class="no-access-block">
+          <p>⚠️ No code preview available — internal access has been restricted.</p>
+          <p>Please contact your project administrator if you need to regain access.</p>
+        </div>
+      </ng-template>
+    </div>
+  </section>
+
+
+  <!-- Sidebar Kanan -->
+  <aside class="job-info" *ngIf="!isMobileView && selectedJob">
+    <div class="info-card">
+      <img
+        [src]="selectedJob.image"
+        [alt]="selectedJob.company"
+        class="company-logo"
+      />
+      <a
+        [href]="selectedJob.url"
+        target="_blank"
+        class="visit-link"
+        [style.color]="selectedJob.themeColor"
+      >
+        Visit Website
+      </a>
+    </div>
+  </aside>
+</div>

@@ -1,0 +1,30 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+@use 'global' as *;
+
+
+/* ===== Layout Global Fix ===== */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+app-root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* container utama (misalnya <main> atau router-outlet) akan isi ruang tengah */
+main,
+.router-outlet {
+  flex: 1;
+}
+
+/* footer selalu nempel di bawah */
+footer {
+  margin-top: auto;
+}
