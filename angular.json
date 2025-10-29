@@ -49,17 +49,24 @@
             "production": {
               "budgets": [
                 {
-                  "type": "initial",
-                  "maximumWarning": "500kB",
-                  "maximumError": "1MB"
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "12kb",
+                  "maximumError": "15kb"
                 },
                 {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "2kB",
-                  "maximumError": "4kB"
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "allowedCommonJsDependencies": [
+                "prismjs",
+                "prismjs/components/prism-typescript",
+                "prismjs/components/prism-javascript",
+                "prismjs/components/prism-java",
+                "prismjs/components/prism-markup"
+              ]
             },
             "development": {
               "optimization": false,
