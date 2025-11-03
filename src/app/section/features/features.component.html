@@ -1,0 +1,204 @@
+<section class="features-section">
+  <h1 class="page-title">Interactive Features Playground</h1>
+
+  <!-- ========== DYNAMIC FORM EXAMPLE ========== -->
+  <div class="feature-block">
+    <h2>🧩 Dynamic Form Example</h2>
+    <p>
+      A mini simulation of my dynamic form system — labels and fields can be edited dynamically.
+    </p>
+
+    <div class="form-preview">
+      <form>
+        <div
+          class="form-row"
+          *ngFor="let field of fields(); let i = index; trackBy: trackByIndex"
+        >
+          <!-- Label & Type Row -->
+          <div class="field-header">
+            <input
+              #labelRef
+              type="text"
+              class="label-input"
+              [value]="field.label"
+              placeholder="Field Label"
+              (input)="updateLabel(i, labelRef.value)"
+            />
+            <select
+              class="type-selector"
+              [value]="field.type"
+              (change)="updateType(i, $any($event.target).value)"
+            >
+              <option value="text">Text</option>
+              <option value="email">Email</option>
+              <option value="number">Number</option>
+              <option value="date">Date</option>
+              <option value="password">Password</option>
+            </select>
+            <button
+              type="button"
+              class="remove-btn"
+              (click)="removeField(i)"
+              title="Remove Field"
+            >
+              🗑️
+            </button>
+          </div>
+
+          <!-- Value Input -->
+          <input
+            #inputRef
+            class="value-input"
+            [type]="field.type"
+            [placeholder]="field.label"
+            [value]="field.value"
+            (input)="updateValue(i, inputRef.value)"
+          />
+        </div>
+      </form>
+
+      <div class="button-group">
+        <button class="btn-add" (click)="addField()">+ Add Field</button>
+        <button class="btn-preview" (click)="showPreview()">Preview JSON</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== DIALOG EXAMPLE ========== -->
+  <div class="feature-block">
+    <h2>💬 Dialog Example</h2>
+    <p>
+      Demonstration of a reusable Angular Material dialog component that can
+      display custom forms or confirmations.
+    </p>
+
+    <button class="btn-dialog" (click)="openDialog()">Open Dialog</button>
+  </div>
+
+  <!-- ========== FILE UPLOAD PREVIEW EXAMPLE ========== -->
+  <div class="feature-block">
+    <h2>📂 File Upload Preview Example</h2>
+    <p>
+      Try uploading one or more images below — the selected files will be previewed instantly with remove options.
+    </p>
+
+    <div
+      class="upload-container"
+      (dragover)="onDragOver($event)"
+      (dragleave)="onDragLeave($event)"
+      (drop)="onDropFiles($event)"
+      [class.dragging]="isDragging"
+    >
+      <input
+        type="file"
+        #fileInput
+        (change)="onFileSelected($event)"
+        multiple
+        accept="image/*"
+        hidden
+      />
+      <p>
+        Drag & Drop files here or
+        <button type="button" class="btn-browse" (click)="fileInput.click()">Browse</button>
+      </p>
+    </div>
+
+    <div class="preview-grid" *ngIf="uploadedFiles.length">
+      <div class="preview-card" *ngFor="let file of uploadedFiles; let i = index" @fadeSlide>
+        <img [src]="file.url" [alt]="file.name" />
+        <div class="file-info">
+          <span>{{ file.name }}</span>
+          <button class="delete-btn" (click)="removeFile(i)" title="Remove">🗑️</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== DRAG and DROP EXAMPLE ========== -->
+  <div class="feature-block">
+    <h2>🖱️ Drag & Drop Example</h2>
+    <p>
+      Drag items from the left to the right — you can drop duplicates, reorder them freely,
+      and remove items with the trash icon.
+    </p>
+
+    <div class="drag-drop-container">
+      <div
+        class="drag-source"
+        cdkDropList
+        #dragSource="cdkDropList"
+        [cdkDropListData]="availableItems"
+        [cdkDropListConnectedTo]="[dropZone]"
+        (cdkDropListDropped)="drop($event)"
+      >
+        <h3>Available Items</h3>
+        <div
+          class="draggable-item"
+          *ngFor="let item of availableItems"
+          cdkDrag
+          [cdkDragData]="item"
+        >
+          {{ item }}
+        </div>
+      </div>
+
+      <div
+        class="drop-zone"
+        cdkDropList
+        #dropZone="cdkDropList"
+        [cdkDropListData]="droppedItems"
+        (cdkDropListDropped)="drop($event)"
+      >
+        <h3>Dropped Items</h3>
+        <div class="drop-list">
+          <div
+            class="dropped-item"
+            *ngFor="let val of droppedItems; let i = index"
+            cdkDrag
+            @fadeSlide
+          >
+            <span>{{ val }}</span>
+            <button class="delete-btn" (click)="removeDroppedItem(i)" title="Remove">
+              🗑️
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="button-group">
+      <button class="btn-preview" (click)="previewDropped()">Preview Values</button>
+    </div>
+  </div>
+
+  <!-- ========== MINI INTERACTION DEMO (GAME-LIKE) ========== -->
+  <div class="feature-block">
+    <h2>🎮 Mini Interaction Demo (Game-like)</h2>
+    <p>
+      Test your reaction speed! Click the box as soon as it turns <b>green</b> to see your score.
+    </p>
+
+    <div class="reaction-container">
+      <div
+        class="reaction-box"
+        [ngClass]="reactionState"
+        (click)="handleBoxClick()"
+      >
+        <span *ngIf="reactionState === 'waiting'">Wait for green...</span>
+        <span *ngIf="reactionState === 'ready'">Click!</span>
+        <span *ngIf="reactionState === 'clicked'">{{ reactionMessage }}</span>
+      </div>
+
+      <button class="btn-start" (click)="startReactionTest()" [disabled]="isRunning">
+        Start Test
+      </button>
+
+      <div class="reaction-result" *ngIf="reactionTimes.length > 0">
+        <p>⏱️ Average reaction: <b>{{ getAverageReaction() }} ms</b></p>
+        <p>Best time: <b>{{ getBestReaction() }} ms</b></p>
+      </div>
+    </div>
+  </div>
+
+</section>

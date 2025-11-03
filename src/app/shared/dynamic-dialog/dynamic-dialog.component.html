@@ -1,0 +1,22 @@
+<h2 mat-dialog-title>{{ data.title }}</h2>
+
+<mat-dialog-content class="dialog-content">
+  <p>{{ data.message }}</p>
+
+  <form class="dialog-form">
+    <mat-form-field appearance="fill" class="full-width">
+      <input
+        matInput
+        [(ngModel)]="userInput"
+        placeholder="Ex. Type something..."
+        name="userMessage"
+        autocomplete="off"
+      />
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Close</button>
+  <button mat-flat-button color="primary" (click)="onSubmit()">Submit</button>
+</mat-dialog-actions>

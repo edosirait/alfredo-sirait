@@ -29,6 +29,15 @@
     </a>
 
     <a
+      routerLink="/features"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        (click)="menuOpen = false"
+    >
+      Features
+    </a>
+
+    <a
       routerLink="/contact"
       routerLinkActive="active"
       [routerLinkActiveOptions]="{ exact: true }"

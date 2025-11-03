@@ -14,7 +14,6 @@
       "Enhancement existing feature and maintaining existing",
       "Create Report using Jasper",
       "Developed an interactive freight cost management module with real-time data validation.",
-      "Migrated AngularJS-based legacy systems to Angular 10+ with improved UX consistency.",
       "Integrated Spring Boot microservices for master data and transaction sync.",
       "Worked closely with business analysts to digitize manual data-entry workflows."
     ],
@@ -29,7 +28,6 @@
       "Agile / Scrum",
       "GitHub",
       "RESTful APIs",
-      "Agile / Scrum",
       "Bitbucket",
       "Jira",
       "Satori"
@@ -216,6 +214,216 @@
         "url": "https://www.gotofoods.com/"
       }
     ]
-  }
+  },
+  {
+    "title": "Frontend Developer - VI App",
+    "company": "8I Holdings Singapore",
+    "duration": "December 2021 - August 2022",
+    "location": "Remote (Singapore)",
+    "description": "This project focuses on developing Web applications that aim to make it easier for users to search,\nanalysis, subscribes, of integrated company stock systems. As a member of the front-end development\nteam, I am responsible for making sure users can use the app easily. Apart from that, I am also in\nsupport team of maintaining the bug fixing feature code.",
+    "image": "https://www.8iholdings.com/assets/svg/logo-8ih.svg",
+    "url": "https://www.8iholdings.com//",
+    "themeColor": "#9b6bff",
+    "tasks": [
+      "Develop front end using Angular 7.",
+      "Developed new features for stock analysis.",
+      "Create function and feature posting, comment, and like.",
+      "Create function and feature filtering of searching stocks.",
+      "Create function remarks color when user searching by text.",
+      "Developing with pipe, component and directive.",
+      "Developing modular component.",
+      "Communicate with other staff (Singapore Team) to create new features.",
+      "Contribute to determining estimates of difficult tasks with poker planning.",
+      "Presentation of feature to the users before release to production.",
+      "Fix code smell standardization."
+    ],
+    "achievements": [
+      "Enhanced user interface and UX consistency.",
+      "Code readable, maintainable and reusable component for each the other.",
+      "Application used release to prod."
+    ],
+    "technologies": [
+      "Angular",
+      "TypeScript",
+      "TailwindCSS",
+      "Flex-Layout",
+      "RxJS"
+    ],
+    "environment": [
+      "Agile / Scrum",
+      "Github",
+      "Jira",
+      "Bitbucket",
+      "Confluence",
+      "Adobe XD",
+      "RESTful APIs"
+    ],
+    "exampleLocalChargeMasterCode": null
+  },
 
+  {
+    "title": "Frontend Developer - SuperApps Intranet",
+    "company": "PT Axiata Digital Labs",
+    "duration": "January 2021 - November 2022",
+    "location": "Remote (Indonesia - freelancer)",
+    "description": "This project is about developing features of an employee management application and office area\nenvironment that will feature personal, admin, service, and activity applications for people who visit the\nsite. This project uses Angular technology for its development.\nConsists of 2 applications, namely FrontOffice where services, news and information are provided to\nemployees and the location area, BackOffice as a CMS where to manage and input data which is\nmanaged by the admin. Alfredo is one of the developers who is responsible for building FrontOffice\napplications and also BackOffice with Angular 10. He is responsible for developing employee health\ninformation features, updated news features in the office and also nationally and also developing\nBackOffice for employee data management, where office area and the need for health conditions that\nare very much needed in the current covid-19 situation",
+    "image": "https://www.axiatadigitallabs.com/wp-content/uploads/2023/05/logo-dark2.png",
+    "url": "https://www.newxlife.xlsmart.co.id/en/",
+    "themeColor": "#9b6bff",
+    "tasks": [
+      "Develop front end using Angular 7.",
+      "Develop from scratch Web Customer and Web Backoffice.",
+      "Create function and feautre admin backoffice",
+      "Create feature for news integrating dynamic and feature comment and like.",
+      "Create function and feature status Health profile in Web Customer.",
+      "Developing with pipe, component and directive.",
+      "Developing modular component.",
+      "Create reusable component and develop feature as per figma.",
+      "Contribute to determining estimates of difficult tasks with poker planning.",
+      "Presentation of feature to the users before release to production.",
+      "Fix code smell standardization."
+    ],
+    "achievements": [
+      "Weh application for customer and backoffice for admin",
+      "Enhanced user interface and UX consistency.",
+      "Code readable, maintainable and reusable component for each the other.",
+      "Application used release to prod."
+    ],
+    "technologies": [
+      "Angular",
+      "TypeScript",
+      "TailwindCSS",
+      "Angular Material",
+      "RxJS"
+    ],
+    "environment": [
+      "Agile / Scrum",
+      "Github",
+      "Jira",
+      "Bitbucket",
+      "Confluence",
+      "Figma Design System",
+      "RESTful APIs"
+    ],
+    "exampleLocalChargeMasterCode": null
+  },
+  {
+    "title": "Software Engineer",
+    "company": "Jati Piranti Solutions",
+    "duration": "August 2018 – August 2021",
+    "location": "Jakarta, Indonesia",
+    "image": "https://www.jatis.com/wp-content/uploads/2023/09/Jatis-Solutions-Negative-Logo.png",
+    "url": "https://www.jatis.com/",
+    "themeColor": "#9333ea",
+    "description": "Worked on multiple international web and mobile application projects focusing on performance, modular architecture, and clean code practices.",
+    "projects": [
+      {
+        "name": "CarReady - Web Application",
+        "description": "This project is about developing features of Auction system. This project uses Angular technology for\nits development.\nConsists of 3 applications, namely FrontOffice where services, news and information are provided to\nauction information and the pirce of bidding, BackOffice as a CMS where to manage and input data\nwhich is managed by the admin, and Web Conductor where to manage and starting auction to\ncustomer",
+        "technologies": ["Angular 7", "Java", "Spring Boot"],
+        "tasks": [
+          "Develop from scratch Web applications using Angular 7.",
+          "Create Modular concept pattern in Angular project.",
+          "Create API and Services for Profile and Detail list data.",
+          "Responsible deploy to SIT and UAT env.",
+          "Maintain and bug fixing code."
+        ],
+        "achievements": [
+          "Create code form scratch with OOP principal",
+          "Enhanced user interface and UX consistency.",
+          "Create 3 Apps - Customer, Conductor, Backoffice",
+          "Code readable, maintainable and reusable component for each the other.",
+          "App used release to prod."
+        ],
+        "environment": [
+          "Waterfall",
+          "Nginx",
+          "Jira",
+          "GitLab",
+          "Figma Design System",
+          "RESTful APIs"
+        ],
+        "image": "https://caready.co.id/static/media/caready-logo.fa754e26b8e266fb593c.webp",
+        "url": "https://caready.co.id/"
+      },
+      {
+        "name": "PNM Investment - Web Application Angularjs\n",
+        "description": "This project is about developing features of Investment. This project uses AngularJs technology for its\ndevelopment.\nGenerally in charge of the Support & Maintenance for new features developed (CMS)",
+        "technologies": ["Angular JS"],
+        "tasks": [
+          "Developed front-end modules using AngularJs.",
+          "Enhancement and maintain code as a needed",
+          "Fix feature defect.",
+          "Collaborated with QA for bug tracking and standardization fixes."
+        ],
+        "achievements": [
+          "Enhanced user interface and UX consistency.",
+          "App used release to prod."
+        ],
+        "environment": [
+          "Waterfall",
+          "GitLab",
+          "Jira",
+          "Confluence",
+          "Figma Design System",
+          "RESTful APIs"
+        ],
+        "image": "https://www.pnm.co.id/files/uploads/resourcefile/attachment/2025/Jul/30/6889fce746548/pnm-main.png",
+        "url": "https://www.pnm.co.id/bisnis/pnm-ulamm"
+      },
+      {
+        "name": "Danarkesa Investment Management - Web Application Angularjs",
+        "description": "This project is about developing features of Investment. This project uses AngularJs technology for its\ndevelopment.\nGenerally in charge of the Change Request CMS, (Payment Method System).",
+        "technologies": ["Angular JS"],
+        "tasks": [
+          "Developed and maintained AngularJS Web Portal application for Danareksa.",
+          "Enhancement and maintain code as a needed",
+          "Fix feature defect.",
+          "Collaborated with QA for bug tracking and standardization fixes.",
+          "Supported bug fixing and feature delivery cycles with QA and backend teams."
+        ],
+        "achievements": [
+          "Enhanced user interface and UX consistency.",
+          "App used release to prod."
+        ],
+        "environment": [
+          "Waterfall",
+          "Github",
+          "Jira",
+          "Confluence",
+          "Figma Design System",
+          "RESTful APIs"
+        ],
+        "image": "https://awsimages.detik.net.id/visual/2021/11/24/danareksa_169.jpeg?w=900&q=80",
+        "url": "https://www.danareksa.co.id/"
+      },
+      {
+        "name": "BDI Mutual Fund OmniChannel Integration - Web Application",
+        "description": "Developed mobile-based applications for users to search, order, and process online order of food transactions efficiently.",
+        "technologies": ["AngularJs"],
+        "tasks": [
+          "Developed and maintained AngularJS Web Portal application for BDI.",
+          "Create OMNI channel",
+          "Enhancement and maintain code as a needed",
+          "Fix feature defect.",
+          "Collaborated with QA for bug tracking and standardization fixes.",
+          "Supported bug fixing and feature delivery cycles with User and backend teams."
+        ],
+        "achievements": [
+          "Enhanced user interface and UX consistency.",
+          "App used release to prod."
+        ],
+        "environment": [
+          "Waterfall",
+          "GitLab",
+          "Jira",
+          "Confluence",
+          "Figma Design System",
+          "RESTful APIs"
+        ],
+        "image": "https://www.danamon.co.id/-/media/Project/Danamon/DCWCOID/v1/Header/Logo/Logo-Danamon-Default-v1.svg?h=29&w=28",
+        "url": "https://www.danamon.co.id/"
+      }
+    ]
+  }
 ]

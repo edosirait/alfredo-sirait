@@ -38,6 +38,8 @@
             ],
             "styles": [
               "src/styles/theme.scss",
+              "src/styles/styles.scss",
+              "src/styles/dialog-theme.scss",
               "node_modules/@fortawesome/fontawesome-free/css/all.min.css"
             ],
             "scripts": [],
@@ -112,6 +114,8 @@
             ],
             "styles": [
               "src/styles/theme.scss",
+              "src/styles/styles.scss",
+              "src/styles/dialog-theme.scss",
               "node_modules/@fortawesome/fontawesome-free/css/all.min.css"
             ],
             "scripts": [],

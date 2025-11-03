@@ -11,10 +11,12 @@ import { SectionModule } from './section/section.module';
 import {NgOptimizedImage} from '@angular/common';
 import {provideHttpClient} from '@angular/common/http';
 import { DocsExampleViewerComponent } from './shared/docs-example-viewer/docs-example-viewer.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
+    BrowserAnimationsModule,
     BrowserModule,
     RouterModule,
     AppRoutingModule,
